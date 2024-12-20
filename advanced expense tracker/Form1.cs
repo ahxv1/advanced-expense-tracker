@@ -25,7 +25,17 @@ namespace advanced_expense_tracker
         private void button2_Click(object sender, EventArgs e)
         {
             textBox1.Text = "";
-            textBox2.Text = "";
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
