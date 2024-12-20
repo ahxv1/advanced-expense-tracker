@@ -34,6 +34,7 @@
             button2 = new Button();
             label1 = new Label();
             label2 = new Label();
+            button3 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -89,11 +90,21 @@
             label2.TabIndex = 5;
             label2.Text = "password";
             // 
+            // button3
+            // 
+            button3.Location = new Point(294, 285);
+            button3.Name = "button3";
+            button3.Size = new Size(94, 29);
+            button3.TabIndex = 6;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(432, 387);
+            Controls.Add(button3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button2);
@@ -115,5 +126,6 @@
         private Button button2;
         private Label label1;
         private Label label2;
+        private Button button3;
     }
 }
