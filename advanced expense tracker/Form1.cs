@@ -201,14 +201,21 @@ namespace advanced_expense_tracker
             if (user == "admin" && pass == "admin")
             {
                 MessageBox.Show("Welcome Admin");
+                this.Hide();
+                Form2 form = new Form2();
+                form.Show();
             }
             else if (user == storedUser && pass == storedPass)
             {
                 MessageBox.Show($"Welcome, {storedUser}!");
+                this.Hide();
+                Form2 form = new Form2();
+                form.Show();
             }
             else if(user == "" && pass == "")
             {
                 MessageBox.Show("No existing user data found , please creat a user.");
+
             }
             else
             {
