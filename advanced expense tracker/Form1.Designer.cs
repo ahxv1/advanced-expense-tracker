@@ -276,7 +276,7 @@
             Controls.Add(button5);
             Controls.Add(button4);
             Name = "Form1";
-            Text = "Login page";
+            Text = "Users Login Page";
             Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

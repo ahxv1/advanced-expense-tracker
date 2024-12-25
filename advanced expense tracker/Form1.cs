@@ -9,26 +9,18 @@ namespace advanced_expense_tracker
 {
     public partial class Form1 : Form
     {
+        private string storedUser = "";
+        private string storedPass = "";
+        private string storedName = "";
+        private string storedSurname = "";
+        private string storedEmail = "";
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string user = textBox1.Text;
-            string pass = textBox2.Text;
-
-            if (user == "asd" && pass == "123")
-            {
-                MessageBox.Show("Welcome Admin");
-            }
-            else
-            {
-                MessageBox.Show("Error username or password");
-            }
-        }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             textBox1.Text = "";
@@ -63,7 +55,7 @@ namespace advanced_expense_tracker
             panel1.BringToFront();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        public void button6_Click(object sender, EventArgs e)
         {
             string file = Application.StartupPath + "\\users-info\\";
             string name = textBox3.Text;
@@ -72,60 +64,158 @@ namespace advanced_expense_tracker
             string user = textBox6.Text;
             string pass = textBox7.Text;
 
-            string storedUser = "";
-            string storedPass = "";
-
+            // check if the boxes are empty
             if (user.Equals("") || pass.Equals("") || name.Equals("") || surname.Equals("") || email.Equals(""))
                 {
                     MessageBox.Show("Please Don't Forget to fill out all the boxes :).");
                 }
 
-            // check the file if it's empty
-            if (Directory.Exists(file)){
-                StreamWriter writer = new StreamWriter(file + "Info.txt");
-                
-
-                // write the data in the txt file
-                writer.WriteLine(name_label.Text + ":" + name);
-                writer.WriteLine(surname_label.Text + ":" + surname);
-                writer.WriteLine(email_label.Text + ":" + email);
-                writer.WriteLine(username_label.Text + ":" + user);
-                writer.WriteLine(password_label.Text + ":" + pass);
-                MessageBox.Show("Account Created Successfully");
-                writer.Close();
-
-                //read from the file
-                StreamReader reader = new StreamReader(file+"Info.txt");
-                string line;
-                while ((line = reader.ReadLine()) != null)
+            else {
+                // check the file if it's empty
+                if (Directory.Exists(file))
                 {
-                    if (line.StartsWith("username:"))
+                    StreamWriter writer = new StreamWriter(file + "Info.txt");
+
+
+                    // write the data in the txt file
+                    writer.WriteLine("Name:" + name);
+                    writer.WriteLine("Surname:" + surname);
+                    writer.WriteLine("Email:" + email);
+                    writer.WriteLine("Username:" + user);
+                    writer.WriteLine("Password:" + pass);
+                    MessageBox.Show("Account Created Successfully");
+                    writer.Close();
+
+
+                    //read from the file and get the username and passwrod
+                    StreamReader reader = new StreamReader(file + "Info.txt");
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        storedUser = line.Replace("username:", "").Trim();
+                        if (line.StartsWith("Username:"))
+                        {
+                            storedUser = line.Replace("Username:", "").Trim();
+                        }
+                        else if (line.StartsWith("Password:"))
+                        {
+                            storedPass = line.Replace("Password:", "").Trim();
+                           
+                        }
+                        else if (line.StartsWith("Name:"))
+                        {
+                            storedName = line.Replace("Name:", "").Trim();
+
+                        }
+                        else if (line.StartsWith("Surname:"))
+                        {
+                            storedSurname = line.Replace("Surname:", "").Trim();
+
+                        }
+                        else if (line.StartsWith("Email:"))
+                        {
+                            storedEmail = line.Replace("Email:", "").Trim();
+
+                        }
+
                     }
-                    else if (line.StartsWith("password:"))
-                    {
-                        storedPass = line.Replace("password:", "").Trim();
-                    }
+
+                    
                 }
-                reader.Close();
-                MessageBox.Show(storedUser);
+                // if the file isn't there it will creat it
+                else if (!Directory.Exists(file))
+                {
+                    Directory.CreateDirectory(file);
+                    MessageBox.Show("There was a missing file - now fixed");
 
-            } else if (!Directory.Exists(file))
+                    StreamWriter writer = new StreamWriter(file + "Info.txt");
+                    writer.WriteLine("Name:" + name);
+                    writer.WriteLine("Surname:" + surname);
+                    writer.WriteLine("Email:" + email);
+                    writer.WriteLine("Username:"+ user);
+                    writer.WriteLine("Password:" + pass);
+                    MessageBox.Show("Account Created Successfully");
+                    writer.Close();
+                }
+            }
+               
+
+            
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string user = textBox1.Text;
+            string pass = textBox2.Text;
+            //check if the user has information from the txt file
+            string file = Application.StartupPath + "\\users-info\\Info.txt";
+
+            if (File.Exists(file))
             {
-                Directory.CreateDirectory(file);
-                MessageBox.Show("There was a missing file - now fixed");
+                try
+                {
+                    using (StreamReader reader = new StreamReader(file))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            if (line.StartsWith("Username:"))
+                            {
+                                storedUser = line.Replace("Username:", "").Trim();
+                            }
+                            else if (line.StartsWith("Password:"))
+                            {
+                                storedPass = line.Replace("Password:", "").Trim();
 
-                StreamWriter writer = new StreamWriter(file + "Info.txt");
-                writer.WriteLine(name_label.Text + ":" + name);
-                writer.WriteLine(surname_label.Text + ":" + surname);
-                writer.WriteLine(email_label.Text + ":" + email);
-                writer.WriteLine(username_label.Text + ":" + user);
-                writer.WriteLine(password_label.Text + ":" + pass);
-                MessageBox.Show("Account Created Successfully");
-                writer.Close();
+                            }
+                            else if (line.StartsWith("Name:"))
+                            {
+                                storedName = line.Replace("Name:", "").Trim();
+
+                            }
+                            else if (line.StartsWith("Surname:"))
+                            {
+                                storedSurname = line.Replace("Surname:", "").Trim();
+
+                            }
+                            else if (line.StartsWith("Email:"))
+                            {
+                                storedEmail = line.Replace("Email:", "").Trim();
+
+                            }
+                        }
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error reading user file: {ex.Message}");
+                }
+            }
+            
+
+
+
+
+
+            if (user == "admin" && pass == "admin")
+            {
+                MessageBox.Show("Welcome Admin");
+            }
+            else if (user == storedUser && pass == storedPass)
+            {
+                MessageBox.Show($"Welcome, {storedUser}!");
+            }
+            else if(user == "" && pass == "")
+            {
+                MessageBox.Show("No existing user data found , please creat a user.");
+            }
+            else
+            {
+                MessageBox.Show("Error username or password");
             }
         }
+
 
         private void button8_Click(object sender, EventArgs e)
         {
