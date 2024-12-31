@@ -20,6 +20,8 @@ namespace advanced_expense_tracker
         public AccountDetails(string storedUser, string storedName, string storedSurname, string storedEmail)
         {
             InitializeComponent();
+            // Apply the current theme
+            ThemeManager.ApplyTheme(this);
             this.storedEmail = storedEmail;
             this.storedUser = storedUser;
             this.storedName = storedName;

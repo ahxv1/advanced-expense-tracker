@@ -34,17 +34,18 @@
             label1 = new Label();
             Logout_button = new Button();
             label2 = new Label();
-            HistoryButton = new Button();
+            comboBox1 = new ComboBox();
             button1 = new Button();
             SuspendLayout();
             // 
             // AddRemoveButton
             // 
+            AddRemoveButton.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AddRemoveButton.FlatAppearance.BorderColor = SystemColors.WindowText;
             AddRemoveButton.FlatAppearance.BorderSize = 0;
-            AddRemoveButton.Location = new Point(45, 26);
+            AddRemoveButton.Location = new Point(45, 12);
             AddRemoveButton.Name = "AddRemoveButton";
-            AddRemoveButton.Size = new Size(154, 57);
+            AddRemoveButton.Size = new Size(734, 198);
             AddRemoveButton.TabIndex = 0;
             AddRemoveButton.Text = "Payment Window";
             AddRemoveButton.UseVisualStyleBackColor = true;
@@ -52,7 +53,8 @@
             // 
             // Account_button
             // 
-            Account_button.Location = new Point(167, 391);
+            Account_button.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Account_button.Location = new Point(145, 391);
             Account_button.Name = "Account_button";
             Account_button.Size = new Size(148, 29);
             Account_button.TabIndex = 1;
@@ -63,23 +65,26 @@
             // Money_HP
             // 
             Money_HP.AutoSize = true;
-            Money_HP.Location = new Point(595, 400);
+            Money_HP.Font = new Font("Segoe UI", 10.8F);
+            Money_HP.Location = new Point(513, 395);
             Money_HP.Name = "Money_HP";
-            Money_HP.Size = new Size(105, 20);
+            Money_HP.Size = new Size(128, 25);
             Money_HP.TabIndex = 2;
             Money_HP.Text = "Currect Money";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(699, 400);
+            label1.Font = new Font("Segoe UI", 10.8F);
+            label1.Location = new Point(647, 395);
             label1.Name = "label1";
-            label1.Size = new Size(12, 20);
+            label1.Size = new Size(16, 25);
             label1.TabIndex = 3;
             label1.Text = ":";
             // 
             // Logout_button
             // 
+            Logout_button.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Logout_button.Location = new Point(45, 391);
             Logout_button.Name = "Logout_button";
             Logout_button.Size = new Size(94, 29);
@@ -90,29 +95,31 @@
             // 
             // label2
             // 
-            label2.Location = new Point(717, 400);
+            label2.Font = new Font("Segoe UI", 10.8F);
+            label2.Location = new Point(669, 395);
             label2.Name = "label2";
-            label2.Size = new Size(62, 25);
+            label2.Size = new Size(18, 25);
             label2.TabIndex = 5;
             label2.Text = "0";
             // 
-            // HistoryButton
+            // comboBox1
             // 
-            HistoryButton.Location = new Point(45, 152);
-            HistoryButton.Name = "HistoryButton";
-            HistoryButton.Size = new Size(153, 57);
-            HistoryButton.TabIndex = 6;
-            HistoryButton.Text = "History";
-            HistoryButton.UseVisualStyleBackColor = true;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(693, 396);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(74, 28);
+            comboBox1.TabIndex = 7;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // button1
             // 
-            button1.Location = new Point(45, 89);
+            button1.Location = new Point(299, 391);
             button1.Name = "button1";
-            button1.Size = new Size(154, 57);
-            button1.TabIndex = 7;
-            button1.Text = "Add/Remove Category";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 8;
+            button1.Text = "Dark";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Home_page
             // 
@@ -121,7 +128,7 @@
             BackColor = SystemColors.Control;
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
-            Controls.Add(HistoryButton);
+            Controls.Add(comboBox1);
             Controls.Add(label2);
             Controls.Add(Logout_button);
             Controls.Add(label1);
@@ -142,7 +149,7 @@
         private Label label1;
         private Button Logout_button;
         private Label label2;
-        private Button HistoryButton;
+        private ComboBox comboBox1;
         private Button button1;
     }
 }

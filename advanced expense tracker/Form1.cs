@@ -18,6 +18,8 @@ namespace advanced_expense_tracker
         public Form1()
         {
             InitializeComponent();
+            // Apply the current theme
+            ThemeManager.ApplyTheme(this);
         }
 
         
