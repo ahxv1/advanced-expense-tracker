@@ -33,7 +33,6 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
@@ -42,9 +41,10 @@
             // 
             // BackToHP
             // 
-            BackToHP.Location = new Point(321, 389);
+            BackToHP.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            BackToHP.Location = new Point(312, 389);
             BackToHP.Name = "BackToHP";
-            BackToHP.Size = new Size(139, 49);
+            BackToHP.Size = new Size(140, 57);
             BackToHP.TabIndex = 0;
             BackToHP.Text = "Back To Home Page";
             BackToHP.UseVisualStyleBackColor = true;
@@ -52,87 +52,94 @@
             // 
             // AccountName
             // 
+            AccountName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AccountName.AutoSize = true;
+            AccountName.Font = new Font("Segoe UI", 12F);
             AccountName.Location = new Point(35, 39);
             AccountName.Name = "AccountName";
-            AccountName.Size = new Size(114, 20);
+            AccountName.Size = new Size(150, 28);
             AccountName.TabIndex = 1;
             AccountName.Text = "Account Name :";
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(34, 69);
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(35, 205);
             label1.Name = "label1";
-            label1.Size = new Size(132, 20);
+            label1.Size = new Size(175, 28);
             label1.TabIndex = 2;
             label1.Text = "Account Surname :";
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(445, 39);
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.Location = new Point(406, 39);
             label2.Name = "label2";
-            label2.Size = new Size(111, 20);
+            label2.Size = new Size(145, 28);
             label2.TabIndex = 3;
             label2.Text = "Account Email :";
             label2.Click += label2_Click;
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(445, 72);
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(406, 205);
             label3.Name = "label3";
-            label3.Size = new Size(140, 20);
+            label3.Size = new Size(185, 28);
             label3.TabIndex = 4;
             label3.Text = "Account Username :";
             label3.Click += label3_Click;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(155, 39);
-            label4.Name = "label4";
-            label4.Size = new Size(0, 20);
-            label4.TabIndex = 5;
-            label4.Click += label4_Click;
-            // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Location = new Point(172, 72);
+            label5.Font = new Font("Segoe UI", 12F);
+            label5.Location = new Point(216, 205);
             label5.Name = "label5";
-            label5.Size = new Size(50, 20);
+            label5.Size = new Size(65, 28);
             label5.TabIndex = 6;
             label5.Text = "label5";
             label5.Click += label5_Click;
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Location = new Point(562, 39);
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(557, 39);
             label6.Name = "label6";
-            label6.Size = new Size(50, 20);
+            label6.Size = new Size(65, 28);
             label6.TabIndex = 7;
             label6.Text = "label6";
             label6.Click += label6_Click;
             // 
             // label7
             // 
+            label7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label7.AutoSize = true;
-            label7.Location = new Point(591, 72);
+            label7.Font = new Font("Segoe UI", 12F);
+            label7.Location = new Point(597, 205);
             label7.Name = "label7";
-            label7.Size = new Size(50, 20);
+            label7.Size = new Size(65, 28);
             label7.TabIndex = 8;
             label7.Text = "label7";
             label7.Click += label7_Click;
             // 
             // label8
             // 
+            label8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label8.AutoSize = true;
-            label8.Location = new Point(155, 39);
+            label8.Font = new Font("Segoe UI", 12F);
+            label8.Location = new Point(191, 39);
             label8.Name = "label8";
-            label8.Size = new Size(50, 20);
+            label8.Size = new Size(65, 28);
             label8.TabIndex = 9;
             label8.Text = "label8";
             label8.Click += label8_Click_1;
@@ -141,12 +148,11 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(801, 458);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -166,7 +172,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label label4;
         private Label label5;
         private Label label6;
         private Label label7;

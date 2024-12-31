@@ -46,7 +46,7 @@
             AddRemoveButton.Name = "AddRemoveButton";
             AddRemoveButton.Size = new Size(154, 57);
             AddRemoveButton.TabIndex = 0;
-            AddRemoveButton.Text = "Add/Remove Expense";
+            AddRemoveButton.Text = "Payment Window";
             AddRemoveButton.UseVisualStyleBackColor = true;
             AddRemoveButton.Click += AddRemoveButton_Click_1;
             // 
