@@ -200,16 +200,18 @@ namespace advanced_expense_tracker
 
             if (user == "admin" && pass == "admin")
             {
+                AccountDetails form2 = new AccountDetails(storedUser, storedName, storedSurname, storedEmail);
                 MessageBox.Show("Welcome Admin");
                 this.Hide();
-                Form2 form = new Form2();
+                Home_page form = new Home_page(storedUser, storedName, storedSurname, storedEmail);
                 form.Show();
             }
             else if (user == storedUser && pass == storedPass)
             {
+                AccountDetails form2 = new AccountDetails(storedUser, storedName, storedSurname, storedEmail);
                 MessageBox.Show($"Welcome, {storedUser}!");
                 this.Hide();
-                Form2 form = new Form2();
+                Home_page form = new Home_page(storedUser, storedName, storedSurname, storedEmail);
                 form.Show();
             }
             else if(user == "" && pass == "")
