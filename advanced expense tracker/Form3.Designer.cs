@@ -2,7 +2,7 @@
 
 namespace advanced_expense_tracker
 {
-    partial class Form2
+    partial class Form3
     {
         /// <summary>
         /// Required designer variable.
@@ -37,13 +37,17 @@ namespace advanced_expense_tracker
             comboPaymentMethod = new ComboBox();
             datePicker1 = new DateTimePicker();
             btnAddTransaction = new Button();
-            btnViewTransaction = new Button();
             colorDialog1 = new ColorDialog();
             textBox1 = new TextBox();
             label4 = new Label();
             comboBox1 = new ComboBox();
             saveFileDialog1 = new SaveFileDialog();
             dataGridView1 = new DataGridView();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            button2 = new Button();
+            label5 = new Label();
+            back_home = new Button();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -99,22 +103,13 @@ namespace advanced_expense_tracker
             // 
             // btnAddTransaction
             // 
-            btnAddTransaction.Location = new Point(28, 409);
+            btnAddTransaction.Location = new Point(28, 368);
             btnAddTransaction.Name = "btnAddTransaction";
             btnAddTransaction.Size = new Size(94, 29);
             btnAddTransaction.TabIndex = 8;
             btnAddTransaction.Text = "Save";
             btnAddTransaction.UseVisualStyleBackColor = true;
             btnAddTransaction.Click += btnAddTransaction_Click;
-            // 
-            // btnViewTransaction
-            // 
-            btnViewTransaction.Location = new Point(138, 409);
-            btnViewTransaction.Name = "btnViewTransaction";
-            btnViewTransaction.Size = new Size(94, 29);
-            btnViewTransaction.TabIndex = 9;
-            btnViewTransaction.Text = "button2";
-            btnViewTransaction.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -134,6 +129,7 @@ namespace advanced_expense_tracker
             // 
             // comboBox1
             // 
+            comboBox1.ForeColor = SystemColors.WindowText;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Food", "Transfer", "Hobies", "Daily Life", "Clothes", "Health", "Education", "Else" });
             comboBox1.Location = new Point(28, 187);
@@ -143,24 +139,69 @@ namespace advanced_expense_tracker
             // 
             // dataGridView1
             // 
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataGridView1.BackgroundColor = Color.Silver;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(378, 53);
+            dataGridView1.Location = new Point(284, -2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(247, 385);
+            dataGridView1.Size = new Size(703, 342);
             dataGridView1.TabIndex = 13;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
-            // Form2
+            // button2
+            // 
+            button2.Location = new Point(284, 368);
+            button2.Name = "button2";
+            button2.Size = new Size(708, 29);
+            button2.TabIndex = 14;
+            button2.Text = "Delete";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(284, 343);
+            label5.Name = "label5";
+            label5.Size = new Size(206, 20);
+            label5.TabIndex = 15;
+            label5.Text = "Sellect a transaction to delete";
+            // 
+            // back_home
+            // 
+            back_home.Location = new Point(28, 418);
+            back_home.Name = "back_home";
+            back_home.Size = new Size(94, 29);
+            back_home.TabIndex = 16;
+            back_home.Text = "Home Page";
+            back_home.UseVisualStyleBackColor = true;
+            back_home.Click += back_home_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(87, 111);
+            label6.Name = "label6";
+            label6.Size = new Size(18, 20);
+            label6.TabIndex = 17;
+            label6.Text = "...";
+            // 
+            // Form3
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(640, 523);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(999, 523);
+            Controls.Add(label6);
+            Controls.Add(back_home);
+            Controls.Add(label5);
+            Controls.Add(button2);
             Controls.Add(dataGridView1);
             Controls.Add(comboBox1);
             Controls.Add(label4);
             Controls.Add(textBox1);
-            Controls.Add(btnViewTransaction);
             Controls.Add(btnAddTransaction);
             Controls.Add(datePicker1);
             Controls.Add(comboPaymentMethod);
@@ -168,7 +209,8 @@ namespace advanced_expense_tracker
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Form2";
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Name = "Form3";
             Text = "Payment Process";
             Load += Form5_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -192,13 +234,16 @@ namespace advanced_expense_tracker
         private ComboBox comboPaymentMethod;
         private DateTimePicker datePicker1;
         private Button btnAddTransaction;
-        private Button btnViewTransaction;
         private Label label4;
-        private Button button1;
+        private Button back_home;
         private ColorDialog colorDialog1;
         private TextBox textBox1;
         private ComboBox comboBox1;
         private SaveFileDialog saveFileDialog1;
         private DataGridView dataGridView1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button button2;
+        private Label label5;
+        private Label label6;
     }
 }

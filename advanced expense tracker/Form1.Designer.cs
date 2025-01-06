@@ -31,7 +31,6 @@
             button1 = new Button();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
-            button2 = new Button();
             label1 = new Label();
             label2 = new Label();
             button4 = new Button();
@@ -49,7 +48,6 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             username_label = new Label();
-            button8 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -60,7 +58,7 @@
             button1.Name = "button1";
             button1.Size = new Size(103, 44);
             button1.TabIndex = 0;
-            button1.Text = "Loh In";
+            button1.Text = "Log in";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -78,16 +76,6 @@
             textBox2.PasswordChar = '*';
             textBox2.Size = new Size(171, 27);
             textBox2.TabIndex = 2;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(43, 228);
-            button2.Name = "button2";
-            button2.Size = new Size(81, 66);
-            button2.TabIndex = 3;
-            button2.Text = "Delet the Text";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // label1
             // 
@@ -139,8 +127,7 @@
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(button2);
-            panel1.Location = new Point(12, 100);
+            panel1.Location = new Point(14, 100);
             panel1.Name = "panel1";
             panel1.Size = new Size(396, 366);
             panel1.TabIndex = 9;
@@ -159,7 +146,6 @@
             panel2.Controls.Add(textBox3);
             panel2.Controls.Add(textBox4);
             panel2.Controls.Add(username_label);
-            panel2.Controls.Add(button8);
             panel2.Location = new Point(12, 100);
             panel2.Name = "panel2";
             panel2.Size = new Size(396, 366);
@@ -225,7 +211,7 @@
             // 
             // button6
             // 
-            button6.Location = new Point(61, 278);
+            button6.Location = new Point(180, 285);
             button6.Name = "button6";
             button6.Size = new Size(103, 44);
             button6.TabIndex = 0;
@@ -256,20 +242,11 @@
             username_label.TabIndex = 5;
             username_label.Text = "Username";
             // 
-            // button8
-            // 
-            button8.Location = new Point(263, 293);
-            button8.Name = "button8";
-            button8.Size = new Size(112, 61);
-            button8.TabIndex = 3;
-            button8.Text = "Delete the Text";
-            button8.UseVisualStyleBackColor = true;
-            button8.Click += button8_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Silver;
             ClientSize = new Size(422, 478);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -290,13 +267,14 @@
         private Button button1;
         private TextBox textBox1;
         private TextBox textBox2;
-        private Button button2;
         private Label label1;
         private Label label2;
         private Button button4;
         private Button button5;
         private Panel panel1;
         private Panel panel2;
+        private TextBox textBox7;
+        private Label email_label;
         private Label password_label;
         private TextBox textBox5;
         private TextBox textBox6;
@@ -306,8 +284,5 @@
         private TextBox textBox3;
         private TextBox textBox4;
         private Label username_label;
-        private Button button8;
-        private TextBox textBox7;
-        private Label email_label;
     }
 }

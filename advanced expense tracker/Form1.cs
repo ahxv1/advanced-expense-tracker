@@ -1,8 +1,6 @@
-using Microsoft.VisualBasic.ApplicationServices;
-using System.Data;
+using System;
 using System.IO;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace advanced_expense_tracker
 {
@@ -21,22 +19,22 @@ namespace advanced_expense_tracker
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
+            textBox1.Clear();
+            textBox2.Clear();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             panel1.BringToFront();
-            button4.BackColor = Color.FromArgb(224, 224, 224);
-            button5.BackColor = Color.White;
+            button4.BackColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            button5.BackColor = System.Drawing.Color.White;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             panel2.BringToFront();
-            button5.BackColor = Color.FromArgb(224, 224, 224);
-            button4.BackColor = Color.White;
+            button5.BackColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            button4.BackColor = System.Drawing.Color.White;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,127 +42,105 @@ namespace advanced_expense_tracker
             panel1.BringToFront();
         }
 
-        // Register button click event handler
-        public void button6_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
-            string file = Application.StartupPath + "\\users-info\\";
-            string name = textBox3.Text;
-            string surname = textBox4.Text;
-            string email = textBox5.Text;
-            string user = textBox6.Text;
-            string pass = textBox7.Text;
+            string directoryPath = Path.Combine(Application.StartupPath, "users-info");
+            string filePath = Path.Combine(directoryPath, "Info.txt");
 
-            // Check if the boxes are empty
-            if (user.Equals("") || pass.Equals("") || name.Equals("") || surname.Equals("") || email.Equals(""))
+            string name = textBox3.Text.Trim();
+            string surname = textBox4.Text.Trim();
+            string email = textBox5.Text.Trim();
+            string user = textBox6.Text.Trim();
+            string pass = textBox7.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(surname) ||
+                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(user) || string.IsNullOrWhiteSpace(pass))
             {
-                MessageBox.Show("Please don't forget to fill out all the boxes.");
+                MessageBox.Show("Please fill out all fields.");
+                return;
             }
-            else
+
+            try
             {
-                // Check if the directory exists
-                if (!Directory.Exists(file))
+                if (!Directory.Exists(directoryPath))
+                    Directory.CreateDirectory(directoryPath);
+
+                using (StreamWriter writer = new StreamWriter(filePath, false))
                 {
-                    Directory.CreateDirectory(file); // Create the directory if it doesn't exist
-                    MessageBox.Show("Directory was missing - now fixed");
+                    writer.WriteLine($"Name:{name}");
+                    writer.WriteLine($"Surname:{surname}");
+                    writer.WriteLine($"Email:{email}");
+                    writer.WriteLine($"Username:{user}");
+                    writer.WriteLine($"Password:{pass}");
                 }
 
-                // Write the data in the text file
-                StreamWriter writer = new StreamWriter(file + "Info.txt");
-                writer.WriteLine("Name:" + name);
-                writer.WriteLine("Surname:" + surname);
-                writer.WriteLine("Email:" + email);
-                writer.WriteLine("Username:" + user);
-                writer.WriteLine("Password:" + pass);
-                writer.Close();
+                // Store the user data for future use
+                storedUser = user;
+                storedName = name;
+                storedSurname = surname;
+                storedEmail = email;
 
                 MessageBox.Show("Account created successfully!");
-
-                // Open Form5 (Transaction Form)
-                this.Hide();  // Hide the registration form
-                Form2 transactionForm = new Form2();  // Open Form5
+                this.Hide();
+                Form2 transactionForm = new Form2(storedUser, storedName, storedSurname, storedEmail);
                 transactionForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
 
-        // Login button click event handler
         private void button1_Click(object sender, EventArgs e)
         {
-            string user = textBox1.Text;
-            string pass = textBox2.Text;
-            string file = Application.StartupPath + "\\users-info\\Info.txt";
+            string filePath = Path.Combine(Application.StartupPath, "users-info", "Info.txt");
+            string user = textBox1.Text.Trim();
+            string pass = textBox2.Text.Trim();
 
-            if (File.Exists(file))
+            if (!File.Exists(filePath))
             {
-                try
+                MessageBox.Show("No user data found. Please register first.");
+                return;
+            }
+
+            try
+            {
+                using (StreamReader reader = new StreamReader(filePath))
                 {
-                    using (StreamReader reader = new StreamReader(file))
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            if (line.StartsWith("Username:"))
-                            {
-                                storedUser = line.Replace("Username:", "").Trim();
-                            }
-                            else if (line.StartsWith("Password:"))
-                            {
-                                storedPass = line.Replace("Password:", "").Trim();
-                            }
-                            else if (line.StartsWith("Name:"))
-                            {
-                                storedName = line.Replace("Name:", "").Trim();
-                            }
-                            else if (line.StartsWith("Surname:"))
-                            {
-                                storedSurname = line.Replace("Surname:", "").Trim();
-                            }
-                            else if (line.StartsWith("Email:"))
-                            {
-                                storedEmail = line.Replace("Email:", "").Trim();
-                            }
-                        }
+                        if (line.StartsWith("Username:"))
+                            storedUser = line.Replace("Username:", "").Trim();
+                        else if (line.StartsWith("Password:"))
+                            storedPass = line.Replace("Password:", "").Trim();
+                        else if (line.StartsWith("Name:"))
+                            storedName = line.Replace("Name:", "").Trim();
+                        else if (line.StartsWith("Surname:"))
+                            storedSurname = line.Replace("Surname:", "").Trim();
+                        else if (line.StartsWith("Email:"))
+                            storedEmail = line.Replace("Email:", "").Trim();
                     }
-
                 }
-                catch (Exception ex)
+
+                if (user == storedUser && pass == storedPass)
                 {
-                    MessageBox.Show($"Error reading user file: {ex.Message}");
+                    MessageBox.Show($"Welcome, {storedUser}!");
+                    this.Hide();
+                    Form2 homePage = new Form2(storedUser, storedName, storedSurname, storedEmail);
+                    homePage.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password.");
                 }
             }
-
-            // Check if the login is successful
-            if (user == "admin" && pass == "admin")
+            catch (Exception ex)
             {
-                MessageBox.Show("Welcome Admin!");
-                this.Hide();  // Hide the login form
-                Form2 transactionForm = new Form2();  // Open Form5
-                transactionForm.Show();
-            }
-            else if (user == storedUser && pass == storedPass)
-            {
-                MessageBox.Show($"Welcome, {storedUser}!");
-                this.Hide();  // Hide the login form
-                Form2 transactionForm = new Form2();  // Open Form5
-                transactionForm.Show();
-            }
-            else if (user == "" && pass == "")
-            {
-                MessageBox.Show("No existing user data found, please create a user.");
-            }
-            else
-            {
-                MessageBox.Show("Error: Username or password is incorrect.");
+                MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox7.Text = "";
-            textBox6.Text = "";
-        }
+        
     }
 }
-
